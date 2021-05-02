@@ -2,6 +2,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeMap;
@@ -53,16 +54,12 @@ public class Slang {
 					meaning = map.get(slag);
 				}
 				if (part[0].contains("|")) {
-					//System.out.println(part[0]);
 					String[] d = (part[0]).split("\\|");
-					//for (int ii = 0; ii < d.length; ii++)
-						//System.out.println(d[ii]);
 					Collections.addAll(meaning, d);
 					sizeMap += d.length - 1;
 				} else {
 					meaning.add(part[0]);
 				}
-				// map.put(slag.trim(), meaning);
 				map.put(slag, meaning);
 				i++;
 				sizeMap++;
@@ -118,6 +115,29 @@ public class Slang {
 			s[i][0] = String.valueOf(i);
 			s[i][1] = key;
 			s[i][2] = listMeaning.get(i).trim();
+		}
+		return s;
+	}
+	
+	public String[][] findDefinition(String key) {
+		List<String> keyList = new ArrayList<>();
+		List<String> meaningList = new ArrayList<>();
+		for (Entry<String, List<String>> entry : map.entrySet()) {
+			List<String> meaning = entry.getValue();
+			for (int i = 0; i < meaning.size(); i++) {
+				if (meaning.get(i).toLowerCase().contains(key.toLowerCase())) {
+					keyList.add(entry.getKey());
+					meaningList.add(meaning.get(i));
+				}
+			}
+		}
+		int size = keyList.size();
+		String s[][] = new String[size][3];
+
+		for (int i = 0; i < size; i++) {
+			s[i][0] = String.valueOf(i);
+			s[i][1] = keyList.get(i);
+			s[i][2] = meaningList.get(i);
 		}
 		return s;
 	}
