@@ -7,6 +7,13 @@ public class Main {
 		
 		menu.showMenu();
 		int chosse = menu.Choose();
+		
+		if(chosse == 1)
+		{
+			Slang slang = new Slang();
+			slang.GetListData();
+			
+		}
 	}
 
 }
