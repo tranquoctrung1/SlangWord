@@ -53,10 +53,10 @@ public class Slang {
 					meaning = map.get(slag);
 				}
 				if (part[0].contains("|")) {
-					System.out.println(part[0]);
+					//System.out.println(part[0]);
 					String[] d = (part[0]).split("\\|");
-					for (int ii = 0; ii < d.length; ii++)
-						System.out.println(d[ii]);
+					//for (int ii = 0; ii < d.length; ii++)
+						//System.out.println(d[ii]);
 					Collections.addAll(meaning, d);
 					sizeMap += d.length - 1;
 				} else {
@@ -75,7 +75,7 @@ public class Slang {
 		}
 	}
 	
-	public String[][] GetListData()
+	public String[][] getListData()
 	{
 		String s[][] = new String[sizeMap][3];
 		try 
@@ -105,6 +105,20 @@ public class Slang {
 			ex.printStackTrace();
 		}
 		
+		return s;
+	}
+	
+	public String[][] getMeaningByKeyWord(String key) {
+		List<String> listMeaning = map.get(key);
+		if (listMeaning == null)
+			return null;
+		int size = listMeaning.size();
+		String s[][] = new String[size][3];
+		for (int i = 0; i < size; i++) {
+			s[i][0] = String.valueOf(i);
+			s[i][1] = key;
+			s[i][2] = listMeaning.get(i).trim();
+		}
 		return s;
 	}
 	
