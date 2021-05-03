@@ -150,6 +150,11 @@ public class Main {
 			slang.delete(key, meaning);
 			
 		}
+		else if(choose == 7)
+		{
+			Slang slang = new Slang();
+			slang.reset();
+		}
 		else 
 		{
 			System.out.println("Da thoat chuong trinh");

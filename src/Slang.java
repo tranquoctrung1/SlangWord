@@ -281,7 +281,8 @@ public class Slang {
 		}
 		catch(Exception ex)
 		{
-			System.out.println("Sua khong thanh cong");
+			System.out.println("Sua khong thanh cong \n Tu sua va nghia cu phai co trong danh sach tu dien");
+			
 		}
 		
 	}
@@ -303,8 +304,19 @@ public class Slang {
 		}
 		catch(Exception ex)
 		{
-			System.out.println("Xoa khong thanh cong");
+			System.out.println("Xoa khong thanh cong \n Tu xoa va nghia xoa phai co trong danh sach tu dien");
 		}
 		
+	}
+	
+	public void reset() {
+		try {
+			readFile(FILE_ORIGINAL_SLANG);
+			this.saveFile(FILE_SLANG);
+			System.out.println("Reset file thanh cong");
+		} catch (Exception e) {
+			System.out.println("Khong the reset file");
+			e.printStackTrace();
+		}
 	}
 }
