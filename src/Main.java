@@ -77,6 +77,50 @@ public class Main {
 				System.out.println(result[i][1] + "\t" + result[i][2]);
 			}
 		}
+		else if(choose == 4)
+		{
+			Slang slang = new Slang();
+			
+			System.out.print("Nhap tu can them vao: ");
+			Scanner sc = new Scanner(System.in);
+			String key = sc.nextLine();
+			System.out.print("Nhap nghia can them vao: ");
+			sc = new Scanner(System.in);
+			String meaning = sc.nextLine();
+			
+			boolean checkSlangExists = slang.checkSlangExists(key);
+			if(checkSlangExists == true)
+			{
+				System.out.println("Tu nay da co trong tu dien!");
+				System.out.println("Chon cac cach de xu ly trung!");
+				System.out.println("1/ Overwrite");
+				System.out.println("2/ Duplicate");
+				System.out.println("0/ Thoat");
+				System.out.print("Ban chon: ");
+				sc = new Scanner(System.in);
+				int choosen = sc.nextInt();
+				if(choosen == 1)
+				{
+					slang.addOverwrite(key, meaning);
+					System.out.println("Them theo kieu Overwrite thanh cong");
+				}
+				else if(choosen == 2)
+				{
+					slang.addDuplicate(key, meaning);
+					System.out.println("Them theo kieu Duplicate thanh cong");
+				}
+				else 
+				{
+					System.out.println("Da thoat chuong trinh");
+					System.exit(0);
+				}
+			}
+			else 
+			{
+				slang.addNew(key, meaning);
+				System.out.println("Them moi thanh cong");
+			}
+		}
 		else 
 		{
 			System.out.println("Da thoat chuong trinh");
