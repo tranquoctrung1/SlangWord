@@ -137,6 +137,19 @@ public class Main {
 			
 			slang.edit(key, oldMeaning, newMeaning);
 		}
+		else if(choose == 6)
+		{
+			Slang slang = new Slang();
+			System.out.print("Nhap tu can xoa vao: ");
+			Scanner sc = new Scanner(System.in);
+			String key = sc.nextLine();
+			System.out.print("Nhap nghia can xoa vao: ");
+			sc = new Scanner(System.in);
+			String meaning = sc.nextLine();
+			
+			slang.delete(key, meaning);
+			
+		}
 		else 
 		{
 			System.out.println("Da thoat chuong trinh");

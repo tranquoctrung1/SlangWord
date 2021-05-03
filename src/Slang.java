@@ -209,22 +209,27 @@ public class Slang {
 				}
 				stringBuilder.append("\n");
 			}
-			// System.out.println(stringBuilder.toString());
 			printWriter.write(stringBuilder.toString());
 			printWriter.close();
 
 		} catch (Exception e) {
-			// TODO: handle exception
 			System.out.println(e);
 		}
 	}
 	
 	public void addNew(String slag, String meaning) {
-		List<String> meaningList = new ArrayList<>();
-		meaningList.add(meaning);
-		sizeMap++;
-		map.put(slag, meaningList);
-		this.saveFile(FILE_SLANG);
+		try {
+			List<String> meaningList = new ArrayList<>();
+			meaningList.add(meaning);
+			sizeMap++;
+			map.put(slag, meaningList);
+			this.saveFile(FILE_SLANG);
+		}
+		catch(Exception ex)
+		{
+			System.out.println("Them khong thanh cong");
+		}
+		
 	}
 	
 	public boolean checkSlangExists(String slag) {
@@ -236,25 +241,70 @@ public class Slang {
 	}
 	
 	public void addDuplicate(String slag, String meaning) {
-		List<String> meaningList = map.get(slag);
-		meaningList.add(meaning);
-		sizeMap++;
-		map.put(slag, meaningList);
-		this.saveFile(FILE_SLANG);
+		try {
+			List<String> meaningList = map.get(slag);
+			meaningList.add(meaning);
+			sizeMap++;
+			map.put(slag, meaningList);
+			this.saveFile(FILE_SLANG);
+		}
+		catch(Exception ex)
+		{
+			System.out.println("Them khong thanh cong");
+		}
+		
 	}
 
 	public void addOverwrite(String slag, String meaning) {
-		List<String> meaningList = map.get(slag);
-		meaningList.set(0, meaning);
-		map.put(slag, meaningList);
-		this.saveFile(FILE_SLANG);
+		try
+		{
+			List<String> meaningList = map.get(slag);
+			meaningList.set(0, meaning);
+			map.put(slag, meaningList);
+			this.saveFile(FILE_SLANG);
+		}
+		catch(Exception ex)
+		{
+			System.out.println("Them khong thanh cong");
+		}
+		
 	}
 	
 	public void edit(String slag, String oldValue, String newValue) {
-		List<String> meaning = map.get(slag);
-		int index = meaning.indexOf(oldValue);
-		meaning.set(index, newValue);
-		this.saveFile(FILE_SLANG);
-		System.out.println(oldValue + "\t" + newValue);
+		try
+		{
+			List<String> meaning = map.get(slag);
+			int index = meaning.indexOf(oldValue);
+			meaning.set(index, newValue);
+			this.saveFile(FILE_SLANG);
+			System.out.println(oldValue + "\t" + newValue);
+		}
+		catch(Exception ex)
+		{
+			System.out.println("Sua khong thanh cong");
+		}
+		
+	}
+	
+	public void delete(String slag, String value) {
+		try 
+		{
+			List<String> meaningList = map.get(slag);
+			int index = meaningList.indexOf(value);
+			if (meaningList.size() == 1) {
+				map.remove(slag);
+			} else {
+				meaningList.remove(index);
+				map.put(slag, meaningList);
+			}
+			sizeMap--;
+			this.saveFile(FILE_SLANG);
+			System.out.println("Xoa thanh cong");
+		}
+		catch(Exception ex)
+		{
+			System.out.println("Xoa khong thanh cong");
+		}
+		
 	}
 }
