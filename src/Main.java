@@ -155,6 +155,12 @@ public class Main {
 			Slang slang = new Slang();
 			slang.reset();
 		}
+		else if(choose == 8 ) {
+			Slang slang = new Slang();
+			String[] result = slang.random();
+			
+			System.out.println(result[0] + "\t" + result[1]);
+		}
 		else 
 		{
 			System.out.println("Da thoat chuong trinh");

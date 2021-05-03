@@ -319,4 +319,21 @@ public class Slang {
 			e.printStackTrace();
 		}
 	}
+	
+	public String[] random() {
+		int minimum = 0;
+		int maximum = map.size() - 1;
+		int rand = (minimum + (int) (Math.random() * maximum));
+		String s[] = new String[2];
+		int index = 0;
+		for (String key : map.keySet()) {
+			if (index == rand) {
+				s[0] = key;
+				s[1] = map.get(key).get(0);
+				break;
+			}
+			index++;
+		}
+		return s;
+	}
 }
