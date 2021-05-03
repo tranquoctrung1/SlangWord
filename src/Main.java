@@ -161,6 +161,36 @@ public class Main {
 			
 			System.out.println(result[0] + "\t" + result[1]);
 		}
+		else if(choose == 9)
+		{
+			Slang slang = new Slang();
+			
+			String[] result = slang.quiz(1);
+			System.out.println("Slang Word la: " + result[0] + " voi 4 dap an ");
+			System.out.println("1/ " + result[1]);
+			System.out.println("2/ " + result[2]);
+			System.out.println("3/ " + result[3]);
+			System.out.println("4/ " + result[4]);
+			System.out.print("Ban chon dap an so: ");
+			Scanner sc = new Scanner(System.in);
+			int choosen = sc.nextInt();
+			if(choosen == 1 || choosen == 2 || choosen == 3 || choosen == 4)
+			{
+				if(result[choosen] == result[5])
+				{
+					System.out.println("Dap an chinh xac");
+				}
+				else 
+				{
+					System.out.println("Dap an khong chinh xac");
+				}
+			}
+			else 
+			{
+				System.out.println("Khong co dap an");
+			}
+			
+		}
 		else 
 		{
 			System.out.println("Da thoat chuong trinh");
