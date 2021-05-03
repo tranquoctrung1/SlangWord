@@ -249,4 +249,12 @@ public class Slang {
 		map.put(slag, meaningList);
 		this.saveFile(FILE_SLANG);
 	}
+	
+	public void edit(String slag, String oldValue, String newValue) {
+		List<String> meaning = map.get(slag);
+		int index = meaning.indexOf(oldValue);
+		meaning.set(index, newValue);
+		this.saveFile(FILE_SLANG);
+		System.out.println(oldValue + "\t" + newValue);
+	}
 }

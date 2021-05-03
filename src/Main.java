@@ -121,6 +121,22 @@ public class Main {
 				System.out.println("Them moi thanh cong");
 			}
 		}
+		else if(choose == 5 )
+		{
+			Slang slang = new Slang();
+			
+			System.out.print("Nhap tu can sua vao: ");
+			Scanner sc = new Scanner(System.in);
+			String key = sc.nextLine();
+			System.out.print("Nhap nghia cu can sua vao: ");
+			sc = new Scanner(System.in);
+			String oldMeaning = sc.nextLine();
+			System.out.print("Nhap nghia moi can sua vao: ");
+			sc = new Scanner(System.in);
+			String newMeaning = sc.nextLine();
+			
+			slang.edit(key, oldMeaning, newMeaning);
+		}
 		else 
 		{
 			System.out.println("Da thoat chuong trinh");
