@@ -4,3 +4,6 @@ TNT012`Bom 012
 $`Doolar My| money
 $`Dollar| money
 &`And
+$`Dollar| money
+$`Dollar| money
+&`And

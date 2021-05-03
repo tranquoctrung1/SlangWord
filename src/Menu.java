@@ -14,7 +14,7 @@ public class Menu {
 		System.out.println("8/ Random 1 Slang Word");
 		System.out.println("9/ Do vui theo Slang Word");
 		System.out.println("10/ Do vui theo Definition");
-		System.out.println("0/ Thoat chương trinh");
+		System.out.println("0/ Thoat chuong trinh");
 	}
 	
 	public int Choose()
