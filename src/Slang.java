@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -138,6 +139,51 @@ public class Slang {
 			s[i][0] = String.valueOf(i);
 			s[i][1] = keyList.get(i);
 			s[i][2] = meaningList.get(i);
+		}
+		return s;
+	}
+	
+	public void saveHistoryFile(String slang, String meaning)
+	{
+		try 
+		{
+			File file1 = new File(FILE_HISTORYSLANG);
+			FileWriter fr = new FileWriter(file1, true);
+			fr.write(slang + "`" + meaning + "\n");
+			fr.close();
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
+	}
+	
+	public String[][] readHistoryFile() {
+		List<String> historySlag = new ArrayList<>();
+		List<String> historyDefinition = new ArrayList<>();
+		try {
+			Scanner scanner = new Scanner(new File(FILE_HISTORYSLANG));
+			scanner.useDelimiter("`");
+			String temp = scanner.next();
+			String[] part = scanner.next().split("\n");
+			historySlag.add(temp);
+			historyDefinition.add(part[0]);
+			while (scanner.hasNext()) {
+				temp = part[1];
+				part = scanner.next().split("\n");
+				historySlag.add(temp);
+				historyDefinition.add(part[0]);
+			}
+			scanner.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		int size = historySlag.size();
+		String s[][] = new String[size][3];
+		for (int i = 0; i < size; i++) {
+			s[size - i - 1][0] = String.valueOf(size - i);
+			s[size - i - 1][1] = historySlag.get(i);
+			s[size - i - 1][2] = historyDefinition.get(i);
 		}
 		return s;
 	}

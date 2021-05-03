@@ -20,11 +20,23 @@ public class Main {
 			String[][] result = slang.getMeaningByKeyWord(key);
 			if(result != null)
 			{
+				String meaningToWriteHistoryFile = "";
+				
 				System.out.println("Danh sach nghia cua cac tu ");
 				for(int i = 0; i < result.length; i++)
 				{
 					System.out.println(result[i][2]);
+					if(i == 0)
+					{
+						meaningToWriteHistoryFile += result[i][2];
+					}
+					else 
+					{
+						meaningToWriteHistoryFile += "| " + result[i][2];
+					}
 				}
+				
+				slang.saveHistoryFile(key, meaningToWriteHistoryFile);
 			}
 			else {
 				System.out.println("Khong co du lieu");
@@ -54,6 +66,17 @@ public class Main {
 			}
 			
 		}
+		else if(choose == 3)
+		{
+			Slang slang = new Slang();
+			String[][] result = slang.readHistoryFile();
+			
+			System.out.println("Danh sach cac tu da tim kiem");
+			for(int i =0; i < result.length; i++)
+			{
+				System.out.println(result[i][1] + "\t" + result[i][2]);
+			}
+		}
 		else 
 		{
 			System.out.println("Da thoat chuong trinh");
@@ -62,3 +85,4 @@ public class Main {
 	}
 
 }
+
